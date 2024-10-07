@@ -24,7 +24,7 @@ namespace EFDemo
             var cliente = cr.ObtenerTodos();
             dgvCustomers.DataSource = cliente;
         }
-
+        #region ObtenerPorID
         private void btnTodo_Click(object sender, EventArgs e)
         {
             var cliente =cr.ObtenerPorID(txbObtenerTodos.Text);
@@ -36,6 +36,7 @@ namespace EFDemo
             }
             dgvCustomers.DataSource = lista1;
         }
+        #endregion
 
         #region InsertarCliente
         private void btnInsertar_Click(object sender, EventArgs e)
@@ -60,6 +61,7 @@ namespace EFDemo
         }
         #endregion
 
+        #region ActualizarCliente
         private void llenarCampos(Customers customers)
         {
             txbCustomerID.Text = customers.CustomerID;
@@ -80,6 +82,15 @@ namespace EFDemo
             };
             dgvCustomers.DataSource = lista1;
         }
+        #endregion
+
+        #region ELiminarCliente
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            var eliminadas = cr.DeleteCliente(txbCustomerID.Text);
+            MessageBox.Show($"Se elimino {eliminadas} filas");
+        }
+        #endregion
     }
 
 }
